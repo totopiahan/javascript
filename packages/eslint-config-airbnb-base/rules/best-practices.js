@@ -5,7 +5,7 @@ module.exports = {
 
     // enforces return statements in callbacks of array's methods
     // https://eslint.org/docs/rules/array-callback-return
-    'array-callback-return': 'error',
+    'array-callback-return': ['error', { allowImplicit: true }],
 
     // treat var statements as if they were block scoped
     'block-scoped-var': 'error',
@@ -41,6 +41,11 @@ module.exports = {
 
     // make sure for-in loops have an if statement
     'guard-for-in': 'error',
+
+    // enforce a maximum number of classes per file
+    // https://eslint.org/docs/rules/max-classes-per-file
+    // TODO: semver-major (eslint 5): enable
+    'max-classes-per-file': ['off', 1],
 
     // disallow the use of alert, confirm, and prompt
     'no-alert': 'warn',
@@ -173,6 +178,7 @@ module.exports = {
       props: true,
       ignorePropertyModificationsFor: [
         'acc', // for reduce accumulators
+        'accumulator', // for reduce accumulators
         'e', // for e.returnvalue
         'ctx', // for Koa routing
         'req', // for Express requests
@@ -242,7 +248,10 @@ module.exports = {
 
     // disallow self assignment
     // https://eslint.org/docs/rules/no-self-assign
-    'no-self-assign': 'error',
+    // TODO: semver-major: props -> true
+    'no-self-assign': ['error', {
+      props: false,
+    }],
 
     // disallow comparisons where both sides are exactly the same
     'no-self-compare': 'error',
@@ -270,6 +279,11 @@ module.exports = {
 
     // disallow unnecessary .call() and .apply()
     'no-useless-call': 'off',
+
+    // Disallow unnecessary catch clauses
+    // https://eslint.org/docs/rules/no-useless-catch
+    // TODO: enable, semver-major
+    'no-useless-catch': 'off',
 
     // disallow useless string concatenation
     // https://eslint.org/docs/rules/no-useless-concat
@@ -303,6 +317,10 @@ module.exports = {
     // require `await` in `async function` (note: this is a horrible rule that should never be used)
     // https://eslint.org/docs/rules/require-await
     'require-await': 'off',
+
+    // Enforce the use of u flag on RegExp
+    // https://eslint.org/docs/rules/require-unicode-regexp
+    'require-unicode-regexp': 'off',
 
     // requires to declare all vars on top of their containing scope
     'vars-on-top': 'error',
